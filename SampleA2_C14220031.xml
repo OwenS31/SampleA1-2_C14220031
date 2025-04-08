@@ -1,0 +1,109 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://www.vni.com/products/jmsl/2.0" 
+           xmlns="http://www.vni.com/products/jmsl/2.0" 
+           elementFormDefault="qualified">
+
+    <!-- Elemen abstrak untuk polymorphism -->
+    <xs:element name="Attribute">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="name" type="xs:string" use="required"/>
+                    <xs:attribute name="value" type="xs:string" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Struktur utama -->
+    <xs:element name="MultiCharts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Chart" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                            <xs:element name="ChartTitle" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Menambahkan elemen Legend -->
+                            <xs:element name="Legend" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:element name="AxisXY" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                        <xs:element name="AxisX" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                                    <xs:element name="AxisTitle" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="AxisUnit" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="AxisY" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                                    <xs:element name="AxisTitle" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="AxisUnit" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Data" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element ref="Attribute" maxOccurs="unbounded" minOccurs="0"/>
+                                                    <xs:element name="ToolTip" type="xs:string" minOccurs="0"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="x" type="xs:string" use="optional"/>
+                                                <xs:attribute name="y" type="xs:string" use="optional"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:float"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
